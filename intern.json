@@ -1,0 +1,25 @@
+//https://github.com/theintern/intern-tutorial
+//this file is loaded by intern when use the command
+// node ./node_modules/intern/bin/intern.js
+//when use grunt test (see Gruntfile) this file is not required
+{
+//    "browser": {
+//        "loader": {
+//            "script": "systemjs"
+//        },
+//        "plugins": {
+//            "script": "_dist/src/system.config.js",
+//            "useLoader": true
+//        }
+//    },
+    
+    "suites": [
+        "tests/client/unit/**/*.js",
+        "tests/client/integration/**/*.js",
+        "tests/server/unit/**/*.js",
+        "tests/server/integration/**/*.js"
+    ],
+    
+    //"environments": ["node", { "browserName": "chrome" }]
+    "environments": ["node"]    
+}

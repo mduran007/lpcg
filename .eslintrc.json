@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "rules": {
+        "indent": [
+            "warn", //"error"
+            4
+        ],
+        "linebreak-style": [
+            "warn", //"error",
+            "unix"
+        ],
+        "quotes": [
+            "warn",//"error",
+            "double"
+        ],
+        "semi": [
+            "warn",//"error",
+            "always"
+        ]
+    }
+}

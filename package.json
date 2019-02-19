@@ -1,0 +1,52 @@
+{
+  "name": "lpcg",
+  "version": "1.0.0",
+  "description": "lista de presenca do curso de gerontologia do ipgg",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mduran007/lpcg.git"
+  },
+  "keywords": [
+    "node",
+    "ead"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mduran007/lpcg/issues"
+  },
+  "homepage": "https://github.com/mduran007/lpcg#readme",
+  "devDependencies": {
+    "express-mock-request": "0.0.2",
+    "grunt": "^1.0.3",
+    "grunt-cli": "^1.3.1",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify-es": "github:gruntjs/grunt-contrib-uglify#harmony",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-eslint": "^21.0.0",
+    "grunt-exec": "^3.0.0",
+    "grunt-jslint": "^1.1.15",
+    "grunt-run": "^0.8.1",
+    "grunt-webpack": "^3.1.2",
+    "intern": "^4.3.1",
+    "load-grunt-tasks": "^4.0.0",
+    "webpack": "^4.17.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "grunt-contrib-uglify": "^4.0.0",
+    "grunt-ts": "^6.0.0-beta.21",
+    "node-gyp": "^3.8.0",
+    "object-inspect": "^1.6.0",
+    "pg": "^7.8.0",
+    "phantomjs": "^2.1.7"
+  }
+}

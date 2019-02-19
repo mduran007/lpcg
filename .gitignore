@@ -1,0 +1,12 @@
+node_modules/
+*shell*
+.#*
+#*
+*/**/#*
+*.db
+dist/*
+bin/credentials.sh
+client_dist/
+client_public/
+temp
+bin
