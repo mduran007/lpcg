@@ -202,8 +202,8 @@ iframe {
 .login100-form-title {
   display: block;
   font-family: Poppins-Bold;
-  font-size: 30px;
-  color: #333333;
+  font-size: 18px;
+  color: #06103d;
   line-height: 1.2;
   text-align: center;
 }
@@ -211,6 +211,24 @@ iframe {
   font-size: 60px;
 }
 
+/*------------------------------------------------------------------
+[ Form ]*/
+
+.login101-form {
+  width: 80%;
+}
+
+.login101-form-title {
+  display: block;
+  font-family: Poppins-Bold;
+  font-size: 20px;
+  color: #052e0b;
+  line-height: 3.0;
+  text-align: center;
+}
+.login101-form-title i {
+  font-size: 50px;
+}
 /*------------------------------------------------------------------
 [ Input ]*/
 
