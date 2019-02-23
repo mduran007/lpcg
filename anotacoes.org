@@ -1,0 +1,20 @@
+#+Title: Anotacoes
+#+Subtitle:
+
+* Executando executar arquivo sql
+
+  
+
+   #+NAME                     
+   #+BEGIN_SRC shell :session s1 :results output :exports both
+      #starts code
+      psql -U postgres -h localhost -W  -d lpcg -c res/create_db.sql
+      # res/create_db.sql
+   #+END_SRC
+
+   #+RESULTS:
+   : 
+   : Senha: 
+   : ERROR:  syntax error at or near "res"
+   : LINHA 1: res/create_db.sql
+   :          ^

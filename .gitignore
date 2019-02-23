@@ -10,3 +10,6 @@ client_dist/
 client_public/
 temp
 bin
+env/credentials_properties.sh
+env/credentials_properties.bat
+res/planilhas

@@ -1,4 +1,4 @@
-var persistence = require("../../../src/server/persist_in_sqlite.js").persistence;
+var persistence = require("../../../src/server/persistence/persist_in_elephantsql.js").persistence;
 
 exports.loginService = {
 

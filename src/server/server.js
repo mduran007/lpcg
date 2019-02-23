@@ -3,6 +3,7 @@ var appExpress = express();
 var path = require("path");
 var fs = require("fs");
 var inspect = require('object-inspect');
+var expressSession = require("express-session")
 
 var http = require('http').Server(appExpress);
 
@@ -15,6 +16,7 @@ const middlewares = [
 ];
 
 appExpress.use(middlewares);
+appExpress.disable('x-powered-by');
 
 appExpress.get('/', function(req, res){
     res.sendFile(path.resolve(__dirname + './../client/views/index.html'));
