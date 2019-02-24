@@ -17,16 +17,13 @@ let conString = "postgres://"+user+":"+password+"@"+host+":"+port+"/"+db
 
 let client = new pg.Client(conString);
 
-client.connect( err => {
+client.connect(function(err) {
 
     if(err) {
-        console.error(err);
-        return null;
+        return new Error(err);
     }    
 
 });
 
 exports.conn = client;
  
-
-

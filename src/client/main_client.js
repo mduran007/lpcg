@@ -1,5 +1,5 @@
 consolg.log("Main Client Js Running")
 
-(username,password) => login {
+function login(username,password) {
     return new User("UserSoAluno");
 }

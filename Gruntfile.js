@@ -8,11 +8,11 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),                
         exec: {
-            run_eslint: {
+            eslint: {
                 cmd: './node_modules/.bin/eslint src/main.js'
             },
-            testWithIntern: {
-                cmd: './node_modules/.bin/intern'
+            test: {
+                cmd: './node_modules/.bin/intern env=devlocal'
             }
         },
         concat: {
@@ -26,7 +26,8 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+                 ecma: 8 
             },
             src_client_sources: {
                 files: {
@@ -34,15 +35,20 @@ module.exports = function(grunt) {
                 }
             }
         },
+        //https://github.com/gruntjs/grunt-contrib-copy
         copy: {
             main: {
                 files: [
-                    // includes files within path
                     {expand: true,
-                     src: ['client_dist/*min*.js'],
+                     cwd: 'client_dist',
+                     src: ['*min*.js'],
                      dest: 'client_public',
                      filter: 'isFile'},
-                ],
+                    {expand: true,
+                     cwd:'src/client/views/',
+                     src: ['css/**'],
+                     dest: 'client_public'}                    
+                ]
             },
         },
         clean: {
@@ -98,5 +104,5 @@ module.exports = function(grunt) {
     // Register a task for webdriver tests
     grunt.registerTask('test:browser', ['intern:browser']);    
 
-    grunt.registerTask('default', ['clean','exec:eslint', 'concat', 'uglify', 'exec:testWithIntern','BuildMessage' ]);    
+    grunt.registerTask('default', ['clean', 'concat', 'uglify', 'copy', 'BuildMessage' ]);    
 }

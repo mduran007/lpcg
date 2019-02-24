@@ -5,7 +5,7 @@ let modulePathEnvironment = path.resolve(__dirname + "/../env/environments.js")
 const env = require(modulePathEnvironment).env;
 
 var webapp = require("./server/server.js").webapp;
-var persistence = require("./server/persistence/persist_in_postgresql.js").persistence;
+var persistence = require("./server/persistence/persistence_interface.js").persistence;
 
 
 webapp.post('/login', function (req, res) {
