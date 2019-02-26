@@ -142,7 +142,7 @@ iframe {
 
 .container-table100 {
   width: 100%;
-  min-height: 100vh;
+  min-height: 1vh;
   background: #fff;
 
   display: -webkit-box;
@@ -190,7 +190,7 @@ th, td {
 }
 
 .column2 {
-  width: 33%;
+  width: 50%;
   padding-left: 40px;
   display: -webkit-box;
   display: -webkit-flex;
