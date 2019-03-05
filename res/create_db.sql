@@ -8,7 +8,7 @@ create table alunos(
    nome varchar(100) not null,
    dta_nasc date,
    sexo varchar (10),
-   rg int (10),
+   rg int,
    escolaridade varchar(30),
    cidade varchar(100),
    estado varchar(10),

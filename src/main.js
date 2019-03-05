@@ -23,12 +23,12 @@ webapp.get('/escolhepapel', function (req, res) {
 
 webapp.get('/paginadoaluno', function (req, res) {
     'use strict';
-    res.sendFile(path.resolve(__dirname + '/client/views/aluno.html'));
+    res.sendFile(path.resolve(__dirname + '/client/views/presencaaluno.html'));
 });
 
 webapp.get('/paginadoresponsavel', function (req, res) {
     'use strict';
-    res.sendFile(path.resolve(__dirname + '/client/views/responsavel.html'));
+    res.sendFile(path.resolve(__dirname + '/client/views/responsavelaulas.html'));
 });
 
 webapp.get('/responsavelchamada', function (req, res) {
