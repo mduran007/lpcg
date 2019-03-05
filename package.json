@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "lista de presenca do curso de gerontologia do ipgg",
   "main": "index.js",
-    "scripts": {
-        "startDevLocal":"grunt && node src/main.js env=devlocal",
-        "test": "grunt exec:unitTests"
+  "scripts": {
+    "startDevLocal": "grunt && node src/main.js env=devlocal",
+    "test": "grunt exec:unitTests"
   },
   "repository": {
     "type": "git",
@@ -45,6 +45,7 @@
     "grunt-contrib-uglify": "^4.0.0",
     "node-gyp": "^3.8.0",
     "object-inspect": "^1.6.0",
+    "package.json": "^2.0.1",
     "pg": "^7.8.0",
     "phantomjs": "^2.1.7",
     "properties-reader": "0.0.16"
