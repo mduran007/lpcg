@@ -13,3 +13,4 @@ bin
 env/credentials_properties.sh
 env/credentials_properties.bat
 res/planilhas
+typescript_dist/*

@@ -6,21 +6,48 @@ module.exports = function(grunt) {
     //require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),                
+        pkg: grunt.file.readJSON('package.json'),
+        env: {
+            options: {
+ 	        //Shared Options Hash
+            },
+            dev: {
+                NODE_ENV : 'development',
+                PORT:4000,
+                DB_HOST:"localhost",
+                DB_PORT:5432,
+                DB_DBNAME:"lpcg"
+            },
+            prod: {
+                NODE_ENV : 'production',
+            }
+        },        
         exec: {
             eslint: {
                 cmd: './node_modules/.bin/eslint src/main.js'
             },
             test: {
                 cmd: './node_modules/.bin/intern env=devlocal'
-            }
+            },
+            tsc: {
+                cmd: './node_modules/typescript/bin/tsc --build'
+            },
+            runapp: {
+                cmd: 'node typescript_dist/main.js'
+            },
+            setupDevLocal: {
+                cmd: 'source env/DevLocal_EnvVarsSetup.sh'
+            }            
         },
         concat: {
             options: {
                 separator: ';'
             },
             src_client_sources: {
-                src: ['src/client/**/*.js'],
+                src: [
+                    'src/client/**/*.js',
+                    'src/**/*.js',
+                    '!src/main.js'],
                 dest: 'client_dist/<%= pkg.name %>.js'
             }
         },
@@ -53,7 +80,8 @@ module.exports = function(grunt) {
         },
         clean: {
             client_dist: ['client_dist/**'],
-            client_public: ['client_public']
+            client_public: ['client_public'],
+            typescript_dist: ['typescript_dist/*']
             //contents: ['path/to/dir/*']
             //subfolders: ['path/to/dir/*/'],
             //css: ['path/to/dir/*.css'],
@@ -72,12 +100,12 @@ module.exports = function(grunt) {
 	    }
         },
         watch: {
-            files: ['<%= jshint.files %>'],
-            tasks: ['jshint']
+            files: ['src/**/*.ts'],
+            tasks: ['exec:tsc']
         }
     });
 
-    
+
     // Load the plugin that provides the "uglify" task.
     //https://davidburgos.blog/how-to-fix-grunt-contrib-uglify-for-es6/
     //grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -89,7 +117,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');    
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-exec');    
+    grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks('grunt-env');
     
     grunt.registerTask('BuildMessage', 'Building project...', function() {
         grunt.log.write('Build sucessfully...').ok();
@@ -104,5 +133,11 @@ module.exports = function(grunt) {
     // Register a task for webdriver tests
     grunt.registerTask('test:browser', ['intern:browser']);    
 
-    grunt.registerTask('default', ['clean', 'concat', 'uglify', 'copy', 'BuildMessage' ]);    
+    grunt.registerTask('default', ['clean', 'concat', 'uglify', 'copy', 'BuildMessage' ]);
+    
+    grunt.registerTask('dev', ['env:dev','clean','exec:tsc' , 'watch']);
+    grunt.registerTask('runAppInDevEnv',  ['env:dev','clean','concat','copy','exec:tsc','exec:runapp']);
+    grunt.registerTask('runAppInProdEnv', ['env:prod','clean','concat','copy','exec:tsc','exec:runapp']);
+    
+    grunt.registerTask('build', ['env:build', 'lint', 'other:build:tasks']);    
 }

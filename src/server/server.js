@@ -1,9 +1,11 @@
 var express = require('express');
+var expressSession = require("express-session")
 var appExpress = express();
+
 var path = require("path");
 var fs = require("fs");
 var inspect = require('object-inspect');
-var expressSession = require("express-session")
+
 
 var http = require('http').Server(appExpress);
 
