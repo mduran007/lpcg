@@ -1,46 +1,122 @@
 <!DOCTYPE html>
 <html lang="pt_br">
-    <head>
-        <title>Curso de Gerontologia VI</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-    </head>
 
-    <body>
-            <form id="form-exames" action="/process_exames_form" method="post" enctype="application/x-www-form-urlencoded">
-                <hr>
-                <h2 class="text-center">VI CURSO DE GERONTOLOGIA - IPGG "JOSÉ ERMIRIO DE MORAES"</h2>
-                <div class="container"  >
-                        <h3 class="text-center">CONTROLE DE FREQUENCIA<Form:post></Form:post></h3>
-                        <h3 class="text-center">TELA DE FREQUENCIA DO ALUNO<Form:post></Form:post></h3>
+<head>
+    <title>Presenca - VI CURSO DE GERONTOLOGIA </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="presencaaluno.js"></script>
+    <script type="text/javascript">
+        var nomeresponsavel = "Maria da silva";
+    </script>
+    </script> = 123;
 
 
-                    <table  cellpadding="40px" cellspacing="100">
-                        <thead>
-                                <tr> 
-                                    <th>
-                                        <h2 class="text-center">NOME DO ALUNO:</h2>  
-                                    </th>
-                                </tr>
-                        </thead>
-                    </table>
-                    <table  padding>
-                        <tr>
-                                <h2>DATA DA AULA</h2>
-                        </tr>
-                        <tr>
-                                <h2>PRESENÇA</h2>
-                        </tr>
-                    </table padding>
-                    <style>
-                        div {
-                        padding-top: 50px;
-                        padding-left: 80px;
-                      }
-                    </style>
+</head>
 
-    </body>
+<body>
+    <div class="container-fluid" style="margin-top:80px">
+        <!--==========================Nav bar ==========================-->
+        <nav id="nav" class="navbar navbar-light bg-light fixed-top">
+
+            <div class="btn-group">
+                <!--==========================Botao de salvar ==========================-->
+                <button class="btn btn-success" id="salvar" type="submit" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Salvar
+                </button>
+                <script>
+                    document.getElementById("salvar").onclick = function () {
+                        document.getElementById("form-exames").submit();
+                    }
+                </script>
+                <!--====================================================================-->
+
+                <!--==========================Botao de Listar ==========================-->
+                <button class="btn btn-primary" aria-expanded="false" aria-label="Toggle navigation"
+                    onclick="window.location='/view_listar'">
+                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                    Listar
+                </button>
+                <!--====================================================================-->
+            </div>
+
+            <!--========================== login e senha ==========================-->
+            <div id="login-div" class="form-inline">
+                <label class="col-form-label" for="login">Login:</label>
+                <input name="login" id="login" type="text" class="form-control" style="margin-left: 5px;"></input>
+                <label class="col-form-label" for="senha"> Senha:</label>
+                <input name="senha" id="senha" type="senha" class="form-control" style="margin-left: 5px;"></input>
+                <button id="btnLogin" class="btn btn-primary" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-address-card" aria-hidden="true"></i> Login
+                </button>
+
+            </div>
+            <!--====================================================================-->
+        </nav>
+        <!--====================================================================-->
+
+        <!--========================== logo  ==========================-->
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-4 text-center align-self-center">
+                    <p>LOGO</p>
+                </div>
+                <div class="col-md-8 text-center align-self-center">
+                    <h5>VI CURSO DE GERONTOLOGIA</h5>
+                    <p>IPGG - JOSÉ ERMIRIO DE MORAES</p>
+
+                </div>
+            </div>
+        </div>
+        <!--========================================================-->
+
+        <!--========================== info nome do responsavel, polo e data da aula  ==========================-->
+
+        <form id="form-listadeaulas" action="/process_exames_form" method="post"
+            enctype="application/x-www-form-urlencoded">
+            <div id="aulas">
+                <div class="form-inline justify-content-center" style="margin-bottom: 10px">
+
+                    <div class="form-group form-check-inline">
+
+                        <label class="col-form-label" for="nome"><strong>Nome do responsavel:</label></strong>
+                        <script type="text/javascript">
+                            document.write(nomeresponsavel);
+                        </script>
+
+                    </div>
+                    <div class="form-group form-check-inline">
+
+                        <label class="col-form-label" for="polo"><strong>Polo: </label></strong>
+                        <label name="polo" id="polo">instituto paulista de geriatria e Gerontologia</label>
+
+                    </div>
+
+                    <div class="form-group form-check-inline">
+
+                        <label class="col-form-label" for="data"><strong>Data da aula:</label></strong>
+                        <input type="date" name="data" class="form-control" style="margin-left: 5px;"></input>
+
+                    </div>
+
+                </div>
+            </div>
+            <!--====================================================-->
+
+            <hr>
+            <h2 class="text-center">Lista de presença</h2><br>
+            <script>criarTabelaAluno()</script>
+        </form>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+
 </html>
