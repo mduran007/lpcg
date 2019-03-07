@@ -41,6 +41,8 @@ function criarTabelaAluno() {
 
           var input = document.createElement("INPUT");
           input.setAttribute('type', 'checkbox');
+          input.setAttribute('id', 'checkbox'+[i]);
+          input.setAttribute('checked', '');
           td.appendChild(input);
 
         }

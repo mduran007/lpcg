@@ -32,7 +32,13 @@ function criarTabelaAula() {
           td.appendChild(document.createTextNode("aula: "+i));
         }
         if (j == 2) {
-            td.appendChild(document.createTextNode("botao"));
+            button = document.createElement("button");
+            button.setAttribute("type", "button");
+            pagpresencaaluno = "document.location.href = './presencaaluno.html'";
+            button.setAttribute("onclick", pagpresencaaluno);
+            button.createTextNode("click");
+            td.appendChild(button);
+
           }
         tr.appendChild(td);
 
