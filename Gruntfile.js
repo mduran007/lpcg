@@ -1,10 +1,5 @@
 module.exports = function(grunt) {
 
-    //Project configuration.
-    //https://gruntjs.com/configuring-tasks
-    //https://gruntjs.com/getting-started
-    //require('load-grunt-tasks')(grunt);
-
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         env: {
@@ -35,9 +30,15 @@ module.exports = function(grunt) {
             runapp: {
                 cmd: 'node typescript_dist/main.js'
             },
+            debugApp: {
+                cmd: 'node --inspect typescript_dist/main.js'
+            },            
             setupDevLocal: {
                 cmd: 'source env/DevLocal_EnvVarsSetup.sh'
-            }            
+            },
+            dbSetup: {
+                cmd: 'psql -U postgres'
+            }
         },
         concat: {
             options: {
@@ -99,6 +100,42 @@ module.exports = function(grunt) {
 		options: {}
 	    }
         },
+        pgdb: {
+            copyTempDBToDev: {
+                //https://www.npmjs.com/package/grunt-pg-db                
+                options: {
+                    //Type: string or object Default value: process.env.DATABASE_URL
+                    //connection: using default
+                    sql: [
+                        'CREATE DATABASE lpcg_dev;',
+                        'create table polos(id serial primary key, nome varchar(50) not null);',
+                        'create table alunos( ' +
+                        'id serial primary key,' +
+                        '  nome varchar(100) not null,' +
+                        '  dta_nasc date,' +
+                        '  sexo varchar (10),' +
+                        '  rg int,' +
+                        '  escolaridade varchar(30),' +
+                        '  cidade varchar(100),' +
+                        '  estado varchar(10),' +
+                        '  cep varchar(10),' +
+                        '  endereco varchar(100),' +
+                        '  bairro varchar(30),' +
+                        '  celular varchar(13),' +
+                        '  telefone varchar(13),' +
+                        '  email varchar(50) not null,' +
+                        '  profissao varchar(50),' +
+                        '  ocupacao varchar(50),' +
+                        '  local_trabalho varchar(100),' +
+                        ' senha varchar(15) not null,' +
+                        '   resp boolean not null,' +
+                        '   fk_polo int not null,' +
+                        '   foreign key (fk_polo) references polos(id)' +
+                        '   );'
+                    ]
+                }
+            }
+        },
         watch: {
             files: ['src/**/*.ts'],
             tasks: ['exec:tsc']
@@ -119,6 +156,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-env');
+    //grunt.loadNpmTasks('grunt-pg-db');
     
     grunt.registerTask('BuildMessage', 'Building project...', function() {
         grunt.log.write('Build sucessfully...').ok();

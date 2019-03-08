@@ -10,7 +10,6 @@ client_dist/
 client_public/
 temp
 bin
-env/credentials_properties.sh
-env/credentials_properties.bat
+env/setup_environment_variables.sh
 res/planilhas
 typescript_dist/*

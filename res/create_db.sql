@@ -33,6 +33,6 @@ create table frequencia(
    id serial primary key,
    data date not null,
    presenca boolean not null,
-   fk_lista int not null,
-   foreign key (fk_lista) references lista(id)
+   fk_aluno int not null,
+   foreign key (fk_aluno) references lista(id)
 );

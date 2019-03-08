@@ -1,15 +1,35 @@
 import passport from "passport";
 import request from "request";
 import passportLocal from "passport-local";
-import passportFacebook from "passport-facebook";
 import _ from "lodash";
 
 // import { User, UserType } from '../models/User';
-import { default as Usuario } from "../../model/Aluno";
+import { default as Usuario } from "../../model/Usuario";
 import { Request, Response, NextFunction } from "express";
 
-const LocalStrategy = passportLocal.Strategy;
-const FacebookStrategy = passportFacebook.Strategy;
+
+function mockLogin(username: String, password: String, done) {
+    if ((username == 'admin') && (password == 'admin123')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//const DbLocalStrategy = new LocalStrategy(
+//    function (username, password, done) {
+//        User.findOne({ username: username }, function (err, user) {
+//            if (err) { return done(err); }
+//            if (!user) { return done(null, false); }
+//            if (!user.verifyPassword(password)) { return done(null, false); }
+//            return done(null, user);
+//        });
+//    }//
+//)
+//passport.use(DbLocalStrategy);
+
+
+//const FacebookStrategy = passportFacebook.Strategy;
 /*
 passport.serializeUsuario<any, any>((user, done) => {
   done(undefined, user.id);
@@ -24,7 +44,7 @@ passport.deserializeUsuario((id, done) => {
 
 /**
  * Sign in using Email and Password.
- 
+
 passport.use(new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
   Usuario.findOne({ email: email.toLowerCase() }, (err, user: any) => {
     if (err) { return done(err); }
@@ -122,7 +142,7 @@ passport.use(new FacebookStrategy({
 
 /**
  * Login Required middleware.
- 
+
 export let isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
   if (req.isAuthenticated()) {
     return next();
