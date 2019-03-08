@@ -39,7 +39,7 @@ function verificarBD(email, passwd){
     }else if (email == registrado){
         document.location.href = "./presencaaluno.html";
     }else{
-        console.log("nao cadastrado");
+        alert("nao cadastrado");
     }
 
 }
