@@ -75,8 +75,7 @@ expressApp.use(session(sessionOptions));
 
 
 import { LoginController } from './Controllers/LoginController';
-import { RedisClient } from 'redis';
-expressApp.use("/", LoginController);
+//expressApp.use("/", LoginController);
 
 export const ExpressWebApp: express.Application = expressApp;
 

@@ -4,11 +4,13 @@ function criarTabelaAluno() {
 
   var body = document.getElementsByTagName('body')[0];
   var tbl = document.createElement('table');
+  
+  tbl.setAttribute("id", "table_presencaaluno");
   tbl.style.width = '80%';
   tbl.setAttribute('border', '1');
   var tbdy = document.createElement('tbody');
 
-  for (var i = 0; i < 31; i++) {
+  for (var i = 0; i < 21; i++) {
 
     var tr = document.createElement('tr');
 

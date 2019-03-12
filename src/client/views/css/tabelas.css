@@ -1,0 +1,49 @@
+
+#table_aulas {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left:10%; 
+    margin-right:15%;
+}
+
+#table_aulas td, #table_aulas th{
+    border: 1px solid rgb(0, 0, 0);
+    padding-left: 1%;
+   
+}
+#table_aulas th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(16, 23, 112);
+    color: white;
+    
+}
+tr:nth-child(even) {
+    background-color: #dae2e1;
+}
+
+
+#table_presencaaluno {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left:10%; 
+    margin-right:15%;
+}
+
+#table_presencaaluno td, #table_aulas th{
+    border: 1px solid rgb(0, 0, 0);
+    padding-left: 1%;
+   
+}
+#table_presencaaluno th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(16, 23, 112);
+    color: white;
+    
+}
+

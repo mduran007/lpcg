@@ -3,8 +3,9 @@ function criarTabelaAula() {
 
   var body = document.getElementsByTagName('body')[0];
   var tbl = document.createElement('table');
-  tbl.style.width = '80%';
+  tbl.setAttribute("id", "table_aulas");
   tbl.setAttribute('border', '1');
+
   var tbdy = document.createElement('tbody');
 
   for (var i = 0; i < 31; i++) {
@@ -34,9 +35,9 @@ function criarTabelaAula() {
         if (j == 2) {
             button = document.createElement("button");
             button.setAttribute("type", "button");
-            pagpresencaaluno = "document.location.href = './presencaaluno.html'";
-            button.setAttribute("onclick", pagpresencaaluno);
-            button.createTextNode("click");
+            button.setAttribute("onclick", "document.location.href = './presencaaluno.html'");
+            var buttontxt =document.createTextNode(" Lista de presenca");
+            button.appendChild(buttontxt);
             td.appendChild(button);
 
           }
