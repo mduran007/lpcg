@@ -1,22 +1,22 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         env: {
             options: {
- 	        //Shared Options Hash
+                //Shared Options Hash
             },
             dev: {
-                NODE_ENV : 'development',
-                PORT:4000,
-                DB_HOST:"localhost",
-                DB_PORT:5432,
-                DB_DBNAME:"lpcg"
+                NODE_ENV: 'development',
+                PORT: 4000,
+                DB_HOST: "localhost",
+                DB_PORT: 5432,
+                DB_DBNAME: "lpcg"
             },
             prod: {
-                NODE_ENV : 'production',
+                NODE_ENV: 'production',
             }
-        },        
+        },
         exec: {
             eslint: {
                 cmd: './node_modules/.bin/eslint src/main.js'
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
             },
             debugApp: {
                 cmd: 'node --inspect typescript_dist/main.js'
-            },            
+            },
             setupDevLocal: {
                 cmd: 'source env/DevLocal_EnvVarsSetup.sh'
             },
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
-                 ecma: 8 
+                ecma: 8
             },
             src_client_sources: {
                 files: {
@@ -67,15 +67,18 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 files: [
-                    {expand: true,
-                     cwd: 'client_dist',
-                     src: ['*min*.js'],
-                     dest: 'client_public',
-                     filter: 'isFile'},
-                    {expand: true,
-                     cwd:'src/client/views/',
-                     src: ['css/**'],
-                     dest: 'client_public'}                    
+                    {
+                        expand: true,
+                        cwd: 'client_dist',
+                        src: ['*min*.js'],
+                        dest: 'client_public',
+                        filter: 'isFile'
+                    }, {
+                        expand: true,
+                        cwd: 'src/client/views/',
+                        src: ['css/**'],
+                        dest: 'client_public'
+                    }
                 ]
             },
         },
@@ -89,16 +92,16 @@ module.exports = function(grunt) {
             //all_css: ['path/to/dir/**/*.css']
         },
         intern: {
-	    options: {
+            options: {
                 //WARNING: excludeInstrumentation is deprecated, use coverage instead.
-		//excludeInstrumentation: true,
-		//require: 'app/Block.js',
-		suites: [ 'tests/unit/*.js', 'tests/integration/*.js' ],
-		reporters: [ 'runner' ]
-	    },
-	    node: {
-		options: {}
-	    }
+                //excludeInstrumentation: true,
+                //require: 'app/Block.js',
+                suites: ['tests/unit/*.js', 'tests/integration/*.js'],
+                reporters: ['runner']
+            },
+            node: {
+                options: {}
+            }
         },
         pgdb: {
             copyTempDBToDev: {
@@ -152,30 +155,30 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-copy');    
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-env');
     //grunt.loadNpmTasks('grunt-pg-db');
-    
-    grunt.registerTask('BuildMessage', 'Building project...', function() {
+
+    grunt.registerTask('BuildMessage', 'Building project...', function () {
         grunt.log.write('Build sucessfully...').ok();
     });
 
     // Loading using a local git copy
     grunt.loadNpmTasks('intern');
-    
+
     // Register a test task
     grunt.registerTask('test', ['intern:node']);
-    
-    // Register a task for webdriver tests
-    grunt.registerTask('test:browser', ['intern:browser']);    
 
-    grunt.registerTask('default', ['clean', 'concat', 'uglify', 'copy', 'BuildMessage' ]);
-    
-    grunt.registerTask('dev', ['env:dev','clean','exec:tsc' , 'watch']);
-    grunt.registerTask('runAppInDevEnv',  ['env:dev','clean','concat','copy','exec:tsc','exec:runapp']);
-    grunt.registerTask('runAppInProdEnv', ['env:prod','clean','concat','copy','exec:tsc','exec:runapp']);
-    
-    grunt.registerTask('build', ['env:build', 'lint', 'other:build:tasks']);    
+    // Register a task for webdriver tests
+    grunt.registerTask('test:browser', ['intern:browser']);
+
+    grunt.registerTask('default', ['clean', 'concat', 'copy', 'BuildMessage']);
+
+    grunt.registerTask('dev', ['env:dev', 'clean', 'exec:tsc', 'watch']);
+    grunt.registerTask('runAppInDevEnv', ['env:dev', 'clean', 'concat', 'copy', 'exec:tsc', 'exec:runapp']);
+    grunt.registerTask('runAppInProdEnv', ['env:prod', 'clean', 'concat', 'copy', 'exec:tsc', 'exec:runapp']);
+
+    grunt.registerTask('build', ['env:build', 'lint', 'other:build:tasks']);
 }
