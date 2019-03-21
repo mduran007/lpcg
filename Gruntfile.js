@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                 cmd: './node_modules/.bin/intern env=devlocal'
             },
             tsc: {
-                cmd: './node_modules/typescript/bin/tsc --build'
+                cmd: 'C:/Users/suellen.doy/Documents/github/lpcg/node_modules/.bin/tsc --build'
             },
             runapp: {
                 cmd: 'node typescript_dist/main.js'
